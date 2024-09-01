@@ -1,7 +1,8 @@
 [[headers]]
-  for = "/*"
+  for = "/*.pdf"
     [headers.values]
-    Access-Control-Allow-Origin = "*"
+    Content-Type = "application/pdf"
+    Content-Disposition = "attachment"
 
 [build]
   publish = "."
