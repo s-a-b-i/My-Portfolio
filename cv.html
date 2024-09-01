@@ -156,18 +156,28 @@
     </div>
 
     <script>
-        function downloadPDF() {
-            const element = document.getElementById('cv-content');
-            const opt = {
-                margin:       0,
-                filename:     'Muhammad_Sohaib_Ahmad_CV.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-
-            html2pdf().set(opt).from(element).save();
-        }
-    </script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadButton = document.querySelector('.download-btn');
+            downloadButton.addEventListener('click', downloadPDF);
+        
+            function downloadPDF() {
+                const element = document.getElementById('cv-content');
+                const opt = {
+                    margin: 10,
+                    filename: 'Muhammad_Sohaib_Ahmad_CV.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+        
+                html2pdf().set(opt).from(element).save().then(() => {
+                    console.log('PDF generated successfully');
+                }).catch(error => {
+                    console.error('Error generating PDF:', error);
+                    alert('There was an error generating the PDF. Please try again.');
+                });
+            }
+        });
+        </script>
 </body>
 </html>
