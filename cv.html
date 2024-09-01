@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Sohaib Ahmad - CV</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.3;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20mm;
+            box-sizing: border-box;
+        }
+        header {
+            background: #35424a;
+            color: white;
+            padding: 10px 0;
+            margin-bottom: 15px;
+            border-bottom: #000 2px solid;
+        }
+        header h1 {
+            margin: 0;
+            text-align: center;
+            font-size: 24px;
+        }
+        .contact-info {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .section h2 {
+            color: #35424a;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            margin-bottom: 3px;
+            font-size: 12px;
+        }
+        p {
+            font-size: 12px;
+            margin: 0 0 5px 0;
+        }
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #35424a;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        @media print {
+            body {
+                background-color: white;
+            }
+            .page {
+                width: 100%;
+                height: auto;
+                box-shadow: none;
+                padding: 0;
+            }
+            .download-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn" onclick="downloadPDF()">Download PDF</button>
+    <div class="page" id="cv-content">
+        <header>
+            <h1>MUHAMMAD SOHAIB AHMAD</h1>
+        </header>
+
+        <div class="contact-info">
+            <p>UG(S.E) | GRAPHIC DESIGNER | MERN STACK DEVELOPER</p>
+            <p>Phone: +92 32707170709 | Email: smsohaib794@gmail.com | Location: Faisalabad</p>
+        </div>
+
+        <div class="section">
+            <h2>About Me</h2>
+            <p>Creative UG (S.E) student bridging design & development. Skilled in visuals (Illustrator) and web apps (MERN stack). Eager learner with strong communication for successful collaborations.</p>
+        </div>
+
+        <div class="section">
+            <h2>Education</h2>
+            <ul>
+                <li><strong>Software Engineering</strong> - National Textile University  (2021 - 2025)</li>
+                <li>Currently in 6th Semester, maintaining strong academic performance</li>
+                <li><strong>F.S.C (HSSC)</strong> - Achieved 94% score</li>
+                <li><strong>Matric (SSC)</strong> - Completed in 2021 with distinction</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Technical Skills</h2>
+            <ul>
+                <li><strong>Frontend:</strong> React.js, Redux, HTML5, CSS3, JavaScript (ES6+)</li>
+                <li><strong>Backend:</strong> Node.js, Express.js, MongoDB</li>
+                <li><strong>UI/UX Design:</strong> Adobe Illustrator, Figma</li>
+                <li><strong>Version Control:</strong> Git, GitHub</li>
+                <li><strong>Additional Libraries:</strong> Socket.io, Mongoose, JWT, Bcrypt</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Projects</h2>
+            <ul>
+                <li><strong>Chat Application (MERN Stack):</strong> Real-time messaging with Socket.io, user authentication, message encryption</li>
+                <li><strong>E-commerce Platform (MERN Stack):</strong> Full-featured online store with product catalog, shopping cart, checkout, payment integration</li>
+                <li><strong>Admin Panel (MERN Stack):</strong> Comprehensive dashboard for user, product, and order management; data visualization</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Soft Skills</h2>
+            <ul>
+                <li>Strong problem-solving and analytical thinking</li>
+                <li>Excellent communication and teamwork abilities</li>
+                <li>Leadership and project management experience</li>
+                <li>Adaptability and quick learning in fast-paced environments</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Languages</h2>
+            <ul>
+                <li>English (Fluent)</li>
+                <li>Urdu (Native)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function downloadPDF() {
+            const element = document.getElementById('cv-content');
+            const opt = {
+                margin:       0,
+                filename:     'Muhammad_Sohaib_Ahmad_CV.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+</html>
