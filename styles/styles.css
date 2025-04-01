@@ -6,33 +6,34 @@
 }
 
 :root {
-  --color-primary: #191d2b;
-  --color-secondary: #27AE60;
-  --color-white: #FFFFFF;
-  --color-black: #000;
-  --color-grey0: #f8f8f8;
-  --color-grey-1: #dbe1e8;
-  --color-grey-2: #b2becd;
-  --color-grey-3: #6c7983;
-  --color-grey-4: #454e56;
-  --color-grey-5: #2a2e35;
-  --color-grey-6: #12181b;
-  --br-sm-2: 14px;
-  --box-shadow-1: 0 3px 15px rgba(0,0,0,.3);
+  --color-primary: #0F1624;        /* Deeper, more navy background */
+  --color-secondary: #00A8CC;      /* Bright blue accent */
+  --color-white: #FFFFFF;          /* White text */
+  --color-black: #000;             /* Pure black */
+  --color-grey0: #f8f8f8;          /* Lightest grey */
+  --color-grey-1: #dbe1e8;         /* Light grey */
+  --color-grey-2: #b2becd;         /* Medium-light grey */
+  --color-grey-3: #6c7983;         /* Medium grey */
+  --color-grey-4: #454e56;         /* Medium-dark grey */
+  --color-grey-5: #2a2e35;         /* Dark grey */
+  --color-grey-6: #12181b;         /* Darkest grey */
+  --br-sm-2: 14px;                 /* Border radius */
+  --box-shadow-1: 0 3px 15px rgba(0,0,0,.3); /* Box shadow */
 }
 
+/* Minimal/Clean */
 .light-mode {
-  --color-primary: #FFFFFF;
-  --color-secondary: #F56692;
-  --color-white: #454e56;
-  --color-black: #000;
-  --color-grey0: #f8f8f8;
-  --color-grey-1: #6c7983;
-  --color-grey-2: #6c7983;
-  --color-grey-3: #6c7983;
-  --color-grey-4: #454e56;
-  --color-grey-5: #f8f8f8;
-  --color-grey-6: #12181b;
+  --color-primary: #FFFFFF;        /* Background color */
+  --color-secondary: #6C63FF;      /* Accent color - purple */
+  --color-white: #2C2C2C;          /* Text color */
+  --color-black: #000000;          /* Pure black */
+  --color-grey0: #FAFAFA;          /* Lightest grey */
+  --color-grey-1: #707070;         /* Medium grey */
+  --color-grey-2: #505050;         /* Darker grey */
+  --color-grey-3: #3A3A3A;         /* Nearly black */
+  --color-grey-4: #2C2C2C;         /* Very dark grey */
+  --color-grey-5: #EFEFEF;         /* Light grey */
+  --color-grey-6: #E0E0E0;         /* Slightly darker light grey */
 }
 
 body {
@@ -177,6 +178,8 @@ section {
   margin-left: 4rem;
   background-color: var(--color-black);
   transition: all 0.4s ease-in-out;
+  border: 3px solid var(--color-secondary); /* Added border */
+  overflow: hidden; /* Ensures image stays within border */
 }
 .header-content .left-header .image img {
   width: 100%;
@@ -616,6 +619,15 @@ section {
 .contact-content-con .right-contact .submit-btn {
   display: flex;
   justify-content: flex-start;
+  margin-top: 1rem;
+}
+
+.contact-content-con .right-contact .submit-btn .main-btn {
+  background-color: transparent;
+  color: var(--color-white);
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
 }
 
 /*Independed components*/
@@ -626,18 +638,31 @@ section {
 
 .main-btn {
   border-radius: 30px;
-  color: inherit;
+  color: var(--color-white);
   font-weight: 600;
   position: relative;
   border: 1px solid var(--color-secondary);
-  display: flex;
-  align-self: flex-start;
+  display: inline-flex;
   align-items: center;
   overflow: hidden;
+  font-family: inherit;
+  text-decoration: none; /* For <a> tags */
+  cursor: pointer; /* For both <a> and <button> */
 }
+
+button.main-btn {
+  background: none;
+  border: 1px solid var(--color-secondary);
+  font-family: inherit;
+  cursor: pointer;
+}
+
 .main-btn .btn-text {
   padding: 0 2rem;
+  color: var(--color-white);
 }
+
+
 .main-btn .btn-icon {
   background-color: var(--color-secondary);
   display: flex;
@@ -645,7 +670,10 @@ section {
   justify-content: center;
   border-radius: 50%;
   padding: 1rem;
+  color: var(--color-white);
 }
+
+
 .main-btn::before {
   content: "";
   position: absolute;
@@ -962,3 +990,79 @@ section {
 }
 
 /*# sourceMappingURL=styles.css.map */
+
+/* Loader */
+.loader {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader .spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--color-grey-5);
+  border-top: 5px solid var(--color-secondary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Popup */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: var(--color-grey-5);
+  padding: 2rem;
+  border-radius: 10px;
+  position: relative;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content p {
+  color: var(--color-white);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-white);
+}
+
+.popup-content.success {
+  border-left: 5px solid var(--color-secondary);
+}
+
+.popup-content.error {
+  border-left: 5px solid #ff4d4d;
+}
